@@ -1,0 +1,5 @@
+PRODUCT_BUNDLE_IDENTIFIER = com.example.mapskin
+DEVELOPMENT_TEAM =
+MAP_STYLE_URL = https:/$()/tiles.openfreemap.org/styles/liberty
+
+#include? "Local.xcconfig"

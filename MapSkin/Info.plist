@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MapStyleURL</key>
+	<string>$(MAP_STYLE_URL)</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>MapSkin uses your location to show where you are on the map and to guide you to your destination.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>MapSkin uses your location in the background to keep guiding you while navigation is active.</string>
+</dict>
+</plist>

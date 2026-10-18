@@ -1,0 +1,12 @@
+{
+  "formatVersion": 1,
+  "name": "Mi paquete",
+  "author": "Nombre del autor",
+  "description": "Texto opcional",
+  "license": "Texto opcional",
+  "filtering": "smooth",
+  "colors": {
+    "day":   { "background": "#EDEAE2", "road": "#FFFFFF", "roadCasing": "#C8C2B4", "label": "#333333", "route": "#1A73E8" },
+    "night": { "background": "#1E2228", "road": "#5A6270", "roadCasing": "#2C323B", "label": "#E6E6E6", "route": "#4FC3F7" }
+  }
+}
