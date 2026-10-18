@@ -9,7 +9,10 @@ public struct TextureSetLoader: Sendable {
         self.screenScale = screenScale
     }
 
-    public func loadTextures(of pack: TexturePack, for appearance: MapAppearance) throws -> [TextureKind: TextureImage] {
+    public func loadTextures(
+        of pack: TexturePack,
+        for appearance: MapAppearance
+    ) throws -> [TextureKind: TextureImage] {
         var textures: [TextureKind: TextureImage] = [:]
         for kind in TextureKind.allCases {
             let image = try sourceImage(of: kind, in: pack, for: appearance)
@@ -18,7 +21,11 @@ public struct TextureSetLoader: Sendable {
         return textures
     }
 
-    private func sourceImage(of kind: TextureKind, in pack: TexturePack, for appearance: MapAppearance) throws -> CGImage {
+    private func sourceImage(
+        of kind: TextureKind,
+        in pack: TexturePack,
+        for appearance: MapAppearance
+    ) throws -> CGImage {
         if let url = pack.textureURL(for: kind, appearance: appearance) {
             return try readImage(at: url, kind: kind)
         }

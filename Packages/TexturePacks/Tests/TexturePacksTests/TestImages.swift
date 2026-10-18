@@ -60,7 +60,12 @@ enum TestImages {
         )
         context.draw(image, in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
         let offset = (y * image.width + x) * 4
-        return RGBAPixel(red: bytes[offset], green: bytes[offset + 1], blue: bytes[offset + 2], alpha: bytes[offset + 3])
+        return RGBAPixel(
+            red: bytes[offset],
+            green: bytes[offset + 1],
+            blue: bytes[offset + 2],
+            alpha: bytes[offset + 3]
+        )
     }
 
     static func writePNG(_ image: CGImage, to url: URL) throws {

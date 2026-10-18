@@ -6,6 +6,10 @@
 	<string>$(MAP_TILES_URL)</string>
 	<key>MapGlyphsURL</key>
 	<string>$(MAP_GLYPHS_URL)</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>MapSkin uses your location to show where you are on the map and to guide you to your destination.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>

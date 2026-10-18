@@ -14,7 +14,8 @@ public struct MapSkinFactory: Sendable {
         return MapSkin(
             id: "\(pack.id)-\(appearance.rawValue)-\(screenScale)",
             styleJSON: try styleBuilder.styleJSON(palette: palette),
-            images: images
+            images: images,
+            palette: palette
         )
     }
 }

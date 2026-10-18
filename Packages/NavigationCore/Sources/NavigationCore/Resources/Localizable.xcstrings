@@ -1,0 +1,38 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "routing.error.noRouteFound" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No route was found to this destination."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se encontró una ruta a este destino."
+          }
+        }
+      }
+    },
+    "routing.error.serviceUnavailable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Routes are not available right now. Check your connection and try again."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las rutas no están disponibles en este momento. Revisa tu conexión e inténtalo de nuevo."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

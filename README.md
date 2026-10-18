@@ -33,12 +33,22 @@ The app target only composes the app. Features live in local Swift packages unde
 
 | Package | Responsibility |
 |---|---|
+| `NavigationCore` | Routes, maneuvers and the navigation engine (maneuver progress, off-route detection, rerouting) |
+| `RoutingMapKit` | Route calculation with MapKit |
+| `PlaceSearch` | Place search, recent places and favorites |
+| `Location` | Location updates, with high accuracy only while navigating |
 | `TexturePacks` | `.mapskin` format, texture loading and filtering, night variants, bundled packs |
 | `MapStyle` | Style generation (day/night), palettes, color contrast rules |
-| `MapRendering` | `MapSkinView`, the MapLibre map shared by iPhone and CarPlay |
+| `MapRendering` | `MapSkinView`, the MapLibre map shared by iPhone and CarPlay, route layers and navigation camera |
 | `AppUI` | SwiftUI screens for iPhone |
 
 More packages are added as the features that need them are built.
+
+## Simulating a drive
+
+`Simulation/MonterreyDrive.gpx` is a drive through downtown Monterrey. Run the app from Xcode, search for a destination
+near the end of the drive (for example Parque Fundidora), start navigation and choose
+Debug → Simulate Location → MonterreyDrive.
 
 ## Map data
 
@@ -53,6 +63,9 @@ another provider.
 - Rendering by [MapLibre Native](https://github.com/maplibre/maplibre-native)
 
 See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+Routes are calculated with Apple's `MKDirections`, which has per-app usage limits. Forks with many users should
+keep that in mind or plug in another `RoutingProvider`.
 
 ## License
 

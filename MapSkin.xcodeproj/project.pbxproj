@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0000000000000000000025 /* NavigationCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000027 /* NavigationCore */; };
+		0A0000000000000000000029 /* Location in Frameworks */ = {isa = PBXBuildFile; productRef = 0A000000000000000000002B /* Location */; };
+		0A000000000000000000002D /* RoutingMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A000000000000000000002F /* RoutingMapKit */; };
+		0A0000000000000000000031 /* PlaceSearch in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000033 /* PlaceSearch */; };
 		0A000000000000000000000F /* AppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000011 /* AppUI */; };
 		0A0000000000000000000020 /* MapStyle in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000022 /* MapStyle */; };
 		0A0000000000000000000021 /* TexturePacks in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000023 /* TexturePacks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0000000000000000000035 /* MonterreyDrive.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MonterreyDrive.gpx; sourceTree = "<group>"; };
+		0A0000000000000000000026 /* NavigationCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = NavigationCore; sourceTree = "<group>"; };
+		0A000000000000000000002A /* Location */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Location; sourceTree = "<group>"; };
+		0A000000000000000000002E /* RoutingMapKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RoutingMapKit; sourceTree = "<group>"; };
+		0A0000000000000000000032 /* PlaceSearch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PlaceSearch; sourceTree = "<group>"; };
 		0A0000000000000000000004 /* MapSkin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSkin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0000000000000000000009 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		0A000000000000000000001C /* AppUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppUI; sourceTree = "<group>"; };
@@ -50,17 +59,30 @@
 				0A000000000000000000000F /* AppUI in Frameworks */,
 				0A0000000000000000000020 /* MapStyle in Frameworks */,
 				0A0000000000000000000021 /* TexturePacks in Frameworks */,
+				0A0000000000000000000025 /* NavigationCore in Frameworks */,
+				0A0000000000000000000029 /* Location in Frameworks */,
+				0A000000000000000000002D /* RoutingMapKit in Frameworks */,
+				0A0000000000000000000031 /* PlaceSearch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A0000000000000000000036 /* Simulation */ = {
+			isa = PBXGroup;
+			children = (
+				0A0000000000000000000035 /* MonterreyDrive.gpx */,
+			);
+			path = Simulation;
+			sourceTree = "<group>";
+		};
 		0A0000000000000000000002 = {
 			isa = PBXGroup;
 			children = (
 				0A0000000000000000000005 /* MapSkin */,
 				0A000000000000000000000A /* Packages */,
+				0A0000000000000000000036 /* Simulation */,
 				0A0000000000000000000008 /* Config */,
 				0A0000000000000000000003 /* Products */,
 			);
@@ -89,6 +111,10 @@
 				0A000000000000000000001D /* MapRendering */,
 				0A000000000000000000001F /* MapStyle */,
 				0A000000000000000000001E /* TexturePacks */,
+				0A0000000000000000000026 /* NavigationCore */,
+				0A000000000000000000002A /* Location */,
+				0A000000000000000000002E /* RoutingMapKit */,
+				0A0000000000000000000032 /* PlaceSearch */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -116,6 +142,10 @@
 				0A0000000000000000000011 /* AppUI */,
 				0A0000000000000000000022 /* MapStyle */,
 				0A0000000000000000000023 /* TexturePacks */,
+				0A0000000000000000000027 /* NavigationCore */,
+				0A000000000000000000002B /* Location */,
+				0A000000000000000000002F /* RoutingMapKit */,
+				0A0000000000000000000033 /* PlaceSearch */,
 			);
 			productName = MapSkin;
 			productReference = 0A0000000000000000000004 /* MapSkin.app */;
@@ -151,6 +181,10 @@
 				0A0000000000000000000014 /* XCLocalSwiftPackageReference "Packages/MapRendering" */,
 				0A0000000000000000000024 /* XCLocalSwiftPackageReference "Packages/MapStyle" */,
 				0A0000000000000000000013 /* XCLocalSwiftPackageReference "Packages/TexturePacks" */,
+				0A0000000000000000000028 /* XCLocalSwiftPackageReference "Packages/NavigationCore" */,
+				0A000000000000000000002C /* XCLocalSwiftPackageReference "Packages/Location" */,
+				0A0000000000000000000030 /* XCLocalSwiftPackageReference "Packages/RoutingMapKit" */,
+				0A0000000000000000000034 /* XCLocalSwiftPackageReference "Packages/PlaceSearch" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0A0000000000000000000003 /* Products */;
@@ -317,6 +351,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		0A0000000000000000000028 /* XCLocalSwiftPackageReference "Packages/NavigationCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/NavigationCore;
+		};
+		0A000000000000000000002C /* XCLocalSwiftPackageReference "Packages/Location" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Location;
+		};
+		0A0000000000000000000030 /* XCLocalSwiftPackageReference "Packages/RoutingMapKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/RoutingMapKit;
+		};
+		0A0000000000000000000034 /* XCLocalSwiftPackageReference "Packages/PlaceSearch" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/PlaceSearch;
+		};
 		0A0000000000000000000012 /* XCLocalSwiftPackageReference "Packages/AppUI" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/AppUI;
@@ -336,6 +386,22 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0A0000000000000000000027 /* NavigationCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NavigationCore;
+		};
+		0A000000000000000000002B /* Location */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Location;
+		};
+		0A000000000000000000002F /* RoutingMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RoutingMapKit;
+		};
+		0A0000000000000000000033 /* PlaceSearch */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlaceSearch;
+		};
 		0A0000000000000000000011 /* AppUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppUI;

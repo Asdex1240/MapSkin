@@ -4,7 +4,12 @@ import TexturePacks
 struct TemporaryTexturePack {
     let directoryURL: URL
 
-    init(filtering: TextureFiltering, textureSize: Int, appearances: [MapAppearance], omitting omitted: Set<TextureKind> = []) throws {
+    init(
+        filtering: TextureFiltering,
+        textureSize: Int,
+        appearances: [MapAppearance],
+        omitting omitted: Set<TextureKind> = []
+    ) throws {
         directoryURL = FileManager.default.temporaryDirectory.appending(path: "TexturePacksTests-\(UUID().uuidString)")
         try writeManifest(filtering: filtering)
         for appearance in appearances {

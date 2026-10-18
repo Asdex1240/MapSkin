@@ -1,29 +1,42 @@
 import AppUI
 import Foundation
+import Location
 import MapStyle
+import NavigationCore
+import PlaceSearch
+import RoutingMapKit
 import SwiftUI
 import TexturePacks
 
 @main
 struct MapSkinApp: App {
-    private let skinFactory: MapSkinFactory
-    private let defaultTexturePack: TexturePack
+    private let dependencies: HomeDependencies
 
     init() {
         let configuration = AppConfiguration(bundle: .main)
-        skinFactory = MapSkinFactory(
-            styleBuilder: MapStyleBuilder(
-                tilesURL: configuration.mapTilesURL,
-                glyphsURL: configuration.mapGlyphsURL,
-                labelLanguage: Bundle.main.preferredLocalizations.first ?? "en"
-            )
+        let locationService = LocationService()
+        let routingProvider = MapKitRoutingProvider()
+        dependencies = HomeDependencies(
+            skinFactory: MapSkinFactory(
+                styleBuilder: MapStyleBuilder(
+                    tilesURL: configuration.mapTilesURL,
+                    glyphsURL: configuration.mapGlyphsURL,
+                    labelLanguage: Bundle.main.preferredLocalizations.first ?? "en"
+                )
+            ),
+            texturePack: Self.loadDefaultTexturePack(),
+            placeSearch: PlaceSearchService(),
+            recentPlaces: RecentPlacesStore(defaults: .standard),
+            favorites: FavoritesStore(defaults: .standard),
+            routingProvider: routingProvider,
+            locationTracker: locationService,
+            navigationEngine: NavigationEngine(routingProvider: routingProvider, locationTracker: locationService)
         )
-        defaultTexturePack = Self.loadDefaultTexturePack()
     }
 
     var body: some Scene {
         WindowGroup {
-            HomeView(skinFactory: skinFactory, texturePack: defaultTexturePack)
+            HomeView(dependencies: dependencies)
         }
     }
 

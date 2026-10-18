@@ -41,7 +41,12 @@ struct TextureSetLoaderTests {
     }
 
     @Test func failsWhenTextureIsMissing() throws {
-        let fixture = try TemporaryTexturePack(filtering: .smooth, textureSize: 4, appearances: [.day], omitting: [.snow])
+        let fixture = try TemporaryTexturePack(
+            filtering: .smooth,
+            textureSize: 4,
+            appearances: [.day],
+            omitting: [.snow]
+        )
         defer { fixture.remove() }
         let pack = try TexturePack.load(from: fixture.directoryURL)
 

@@ -29,6 +29,8 @@ public struct MapPalette: Equatable, Sendable {
     public var minorRoad: RGBColor { road.mixed(with: background, amount: 0.2) }
     public var path: RGBColor { label.mixed(with: background, amount: 0.45) }
     public var routeCasing: RGBColor { route.darkened(by: 0.35) }
+    public var alternativeRoute: RGBColor { route.mixed(with: background, amount: 0.55) }
+    public var alternativeRouteCasing: RGBColor { routeCasing.mixed(with: background, amount: 0.45) }
     public var buildingOutline: RGBColor { label.mixed(with: background, amount: 0.6) }
     public var buildingExtrusion: RGBColor { roadCasing.mixed(with: background, amount: 0.3) }
 

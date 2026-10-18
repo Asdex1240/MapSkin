@@ -9,6 +9,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../MapStyle"),
+        .package(path: "../NavigationCore"),
         .package(url: "https://github.com/maplibre/maplibre-gl-native-distribution.git", exact: "6.31.0")
     ],
     targets: [
@@ -16,8 +17,13 @@ let package = Package(
             name: "MapRendering",
             dependencies: [
                 "MapStyle",
+                "NavigationCore",
                 .product(name: "MapLibre", package: "maplibre-gl-native-distribution")
             ]
+        ),
+        .testTarget(
+            name: "MapRenderingTests",
+            dependencies: ["MapRendering"]
         )
     ]
 )

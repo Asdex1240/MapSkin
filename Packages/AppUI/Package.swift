@@ -11,13 +11,19 @@ let package = Package(
     dependencies: [
         .package(path: "../MapRendering"),
         .package(path: "../MapStyle"),
+        .package(path: "../NavigationCore"),
+        .package(path: "../PlaceSearch"),
         .package(path: "../TexturePacks")
     ],
     targets: [
         .target(
             name: "AppUI",
-            dependencies: ["MapRendering", "MapStyle", "TexturePacks"],
+            dependencies: ["MapRendering", "MapStyle", "NavigationCore", "PlaceSearch", "TexturePacks"],
             resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "AppUITests",
+            dependencies: ["AppUI"]
         )
     ]
 )

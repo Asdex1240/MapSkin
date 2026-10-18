@@ -1,31 +1,62 @@
 {
-  "configurations" : [
+  "configurations": [
     {
-      "id" : "6A1F0C2E-3B7D-4E8A-9C51-2D4F8B7E1A03",
-      "name" : "Default",
-      "options" : {
-
-      }
+      "id": "6A1F0C2E-3B7D-4E8A-9C51-2D4F8B7E1A03",
+      "name": "Default",
+      "options": {}
     }
   ],
-  "defaultOptions" : {
-
-  },
-  "testTargets" : [
+  "defaultOptions": {},
+  "testTargets": [
     {
-      "target" : {
-        "containerPath" : "container:Packages\/MapStyle",
-        "identifier" : "MapStyleTests",
-        "name" : "MapStyleTests"
+      "target": {
+        "containerPath": "container:Packages/AppUI",
+        "identifier": "AppUITests",
+        "name": "AppUITests"
       }
     },
     {
-      "target" : {
-        "containerPath" : "container:Packages\/TexturePacks",
-        "identifier" : "TexturePacksTests",
-        "name" : "TexturePacksTests"
+      "target": {
+        "containerPath": "container:Packages/Location",
+        "identifier": "LocationTests",
+        "name": "LocationTests"
+      }
+    },
+    {
+      "target": {
+        "containerPath": "container:Packages/MapRendering",
+        "identifier": "MapRenderingTests",
+        "name": "MapRenderingTests"
+      }
+    },
+    {
+      "target": {
+        "containerPath": "container:Packages/MapStyle",
+        "identifier": "MapStyleTests",
+        "name": "MapStyleTests"
+      }
+    },
+    {
+      "target": {
+        "containerPath": "container:Packages/NavigationCore",
+        "identifier": "NavigationCoreTests",
+        "name": "NavigationCoreTests"
+      }
+    },
+    {
+      "target": {
+        "containerPath": "container:Packages/PlaceSearch",
+        "identifier": "PlaceSearchTests",
+        "name": "PlaceSearchTests"
+      }
+    },
+    {
+      "target": {
+        "containerPath": "container:Packages/TexturePacks",
+        "identifier": "TexturePacksTests",
+        "name": "TexturePacksTests"
       }
     }
   ],
-  "version" : 1
+  "version": 1
 }
