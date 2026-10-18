@@ -16,6 +16,7 @@ struct RouteOptionRow: View {
                     Text(details)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.leading)
                 }
                 Spacer()
                 if isSelected {
@@ -30,7 +31,9 @@ struct RouteOptionRow: View {
                 RoundedRectangle(cornerRadius: 12)
                     .strokeBorder(isSelected ? AnyShapeStyle(.tint) : AnyShapeStyle(.quaternary), lineWidth: 2)
             )
+            .contentShape(RoundedRectangle(cornerRadius: 12))
         }
+        .buttonStyle(.plain)
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 

@@ -10,7 +10,9 @@ struct RoutePreviewPanel: View {
             header
             content
         }
-        .padding()
+        .padding(.horizontal)
+        .padding(.top, 28)
+        .padding(.bottom)
         .frame(maxHeight: .infinity, alignment: .top)
     }
 

@@ -26,6 +26,7 @@ struct SearchPanel: View {
                 content
             }
             .listStyle(.plain)
+            .contentMargins(.bottom, 24, for: .scrollContent)
         }
         .onChange(of: isSearchFieldFocused) { _, isFocused in
             if isFocused { onFocus() }

@@ -9,9 +9,8 @@ public struct HomeView: View {
         let screenScale: Double
     }
 
-    private static let collapsedSheetHeight = 150.0
-    private static let collapsedDetent = PresentationDetent.height(collapsedSheetHeight)
-    private static let navigationBarInset = 110.0
+    private static let maximumCollapsedSheetHeight = 320.0
+    private static let ornamentSpacing = 16.0
 
     @State private var model: HomeModel
     @State private var skinStore: MapSkinStore
@@ -19,7 +18,9 @@ public struct HomeView: View {
     @State private var isSettingsPresented = false
     @State private var isFollowingUser = true
     @State private var recenterRequest = 0
-    @State private var sheetDetent = Self.collapsedDetent
+    @State private var navigationBarHeight = 110.0
+    @State private var sheetPosition = SheetPosition.collapsed
+    @ScaledMetric(relativeTo: .body) private var scaledCollapsedSheetHeight = 196.0
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.displayScale) private var displayScale
 
@@ -42,13 +43,13 @@ public struct HomeView: View {
                 }
                 .overlay {
                     if model.isNavigating {
-                        ActiveNavigationView(model: model)
+                        ActiveNavigationView(model: model) { navigationBarHeight = $0 }
                     }
                 }
         }
         .sheet(isPresented: .constant(!model.isNavigating)) {
             sheetContent
-                .presentationDetents([Self.collapsedDetent, .medium, .large], selection: $sheetDetent)
+                .presentationDetents([collapsedDetent, .medium, .large], selection: detentSelection)
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .presentationDragIndicator(.visible)
                 .interactiveDismissDisabled()
@@ -67,7 +68,7 @@ public struct HomeView: View {
             await model.prepare()
         }
         .onChange(of: model.planning?.place) { _, place in
-            sheetDetent = place == nil ? Self.collapsedDetent : .medium
+            sheetPosition = place == nil ? .collapsed : .medium
         }
         .onChange(of: model.isNavigating) { _, isNavigating in
             UIApplication.shared.isIdleTimerDisabled = isNavigating
@@ -81,7 +82,7 @@ public struct HomeView: View {
         } else {
             SearchPanel(
                 model: model,
-                onFocus: { sheetDetent = .large },
+                onFocus: { sheetPosition = .large },
                 onOpenSettings: { isSettingsPresented = true }
             )
         }
@@ -115,7 +116,22 @@ public struct HomeView: View {
     }
 
     private var bottomOrnamentInset: Double {
-        model.isNavigating ? Self.navigationBarInset : Self.collapsedSheetHeight
+        model.isNavigating ? navigationBarHeight + Self.ornamentSpacing : collapsedSheetHeight
+    }
+
+    private var collapsedSheetHeight: Double {
+        min(scaledCollapsedSheetHeight, Self.maximumCollapsedSheetHeight)
+    }
+
+    private var collapsedDetent: PresentationDetent {
+        SheetPosition.collapsed.detent(collapsedHeight: collapsedSheetHeight)
+    }
+
+    private var detentSelection: Binding<PresentationDetent> {
+        Binding(
+            get: { sheetPosition.detent(collapsedHeight: collapsedSheetHeight) },
+            set: { sheetPosition = SheetPosition($0) }
+        )
     }
 
     private var skinRequest: SkinRequest {
