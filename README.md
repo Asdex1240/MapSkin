@@ -52,6 +52,7 @@ A texture pack is a `.mapskin` file (a renamed `.zip`) with this layout:
 ```
 my-pack.mapskin
 ├── pack.json
+├── marker.png optional location marker, drawn pointing up (square PNG, 16–256 px)
 ├── day/       grass, forest, sand, water, urban, building, industrial, rock, snow (.png or .jpg)
 └── night/     optional; generated from day/ when missing
 ```
@@ -69,6 +70,8 @@ my-pack.mapskin
 - `filtering` is `smooth` for painted or photographic textures and `pixelated` for pixel art.
 - Images must be square, between 8×8 and 512×512 pixels. Packs are limited to 64 files and 20 MB.
 - Missing textures are taken from the default pack. Road and route colors without enough contrast are ignored.
+- `marker.png` replaces the blue location dot on iPhone and CarPlay and turns with your heading. Without it, the
+  standard blue dot is used.
 - In the app, Settings → Textures → Create Your Pack shares an empty template.
 
 Only import textures you created or have permission to use. Packs stay on the device.

@@ -32,3 +32,14 @@ struct MapSkinFactoryTests {
         #expect(skin.styleJSON.contains(nightBackground.uppercased()))
     }
 }
+
+extension MapSkinFactoryTests {
+    @Test func carriesPackFilteringIntoSkin() async throws {
+        let pack = try TexturePack.load(from: BundledTexturePacks.packURL(named: BundledTexturePacks.defaultPackName))
+
+        let skin = try await factory.makeSkin(pack: pack, appearance: .day, screenScale: 2)
+
+        #expect(skin.filtering == pack.manifest.filtering)
+        #expect((skin.marker != nil) == (pack.markerURL != nil))
+    }
+}

@@ -129,6 +129,22 @@
         }
       }
     },
+    "texturePacks.import.error.invalidMarker %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marker.png must be a square PNG image between %1$lld×%1$lld and %2$lld×%2$lld pixels."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "marker.png debe ser una imagen PNG cuadrada de entre %1$lld×%1$lld y %2$lld×%2$lld píxeles."
+          }
+        }
+      }
+    },
     "texturePacks.import.error.manifestNotFound" : {
       "localizations" : {
         "en" : {

@@ -12,6 +12,7 @@ public enum TexturePackImportError: Error, Equatable {
     case imageNotSquare(String)
     case imageSizeOutOfRange(String)
     case noTextures
+    case invalidMarker
 }
 
 extension TexturePackImportError: LocalizedError {
@@ -39,7 +40,15 @@ extension TexturePackImportError: LocalizedError {
             Self.sizeOutOfRangeDescription(for: name)
         case .noTextures:
             String(localized: "texturePacks.import.error.noTextures", bundle: .module)
+        case .invalidMarker:
+            Self.invalidMarkerDescription
         }
+    }
+
+    private static var invalidMarkerDescription: String {
+        let minimum = TexturePackLimits.markerSideRange.lowerBound
+        let maximum = TexturePackLimits.markerSideRange.upperBound
+        return String(localized: "texturePacks.import.error.invalidMarker \(minimum) \(maximum)", bundle: .module)
     }
 
     private static func sizeOutOfRangeDescription(for name: String) -> String {

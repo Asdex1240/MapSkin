@@ -2,6 +2,7 @@ import Foundation
 
 public struct TexturePack: Identifiable, Sendable {
     private static let supportedImageExtensions = ["png", "jpg", "jpeg"]
+    public static let markerFileName = "marker.png"
 
     public let id: String
     public let manifest: TexturePackManifest
@@ -19,6 +20,11 @@ public struct TexturePack: Identifiable, Sendable {
             throw TexturePackError.invalidManifest
         }
         return TexturePack(id: directoryURL.lastPathComponent, manifest: manifest, directoryURL: directoryURL)
+    }
+
+    public var markerURL: URL? {
+        let url = directoryURL.appending(path: Self.markerFileName)
+        return FileManager.default.fileExists(atPath: url.filePath) ? url : nil
     }
 
     public func textureURL(for kind: TextureKind, appearance: MapAppearance) -> URL? {

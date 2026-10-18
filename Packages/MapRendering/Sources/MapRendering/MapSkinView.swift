@@ -37,8 +37,12 @@ public final class MapSkinView: UIView {
 
     public func apply(_ newSkin: MapSkin) {
         guard newSkin.id != skin.id else { return }
+        let markerChanged = newSkin.marker?.cgImage !== skin.marker?.cgImage
         skin = newSkin
         mapView.styleJSON = newSkin.styleJSON
+        if markerChanged {
+            reloadUserLocationView()
+        }
     }
 
     public func show(_ newOverlay: RouteOverlay) {
@@ -144,6 +148,15 @@ public final class MapSkinView: UIView {
         mapView.setCamera(camera, animated: true)
     }
 
+    private func reloadUserLocationView() {
+        let trackingMode = mapView.userTrackingMode
+        mapView.showsUserLocation = false
+        mapView.showsUserLocation = true
+        if trackingMode != .none {
+            mapView.setUserTrackingMode(trackingMode, animated: false, completionHandler: nil)
+        }
+    }
+
     private func embedMapView() {
         mapView.frame = bounds
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -176,6 +189,12 @@ public final class MapSkinView: UIView {
 }
 
 extension MapSkinView: @preconcurrency MLNMapViewDelegate {
+    public func mapView(_ mapView: MLNMapView, viewFor annotation: MLNAnnotation) -> MLNAnnotationView? {
+        guard annotation is MLNUserLocation, let marker = skin.marker else { return nil }
+        let image = UIImage(cgImage: marker.cgImage, scale: marker.scale, orientation: .up)
+        return MarkerAnnotationView(image: image, usesNearestFiltering: skin.filtering == .pixelated)
+    }
+
     public func mapView(_ mapView: MLNMapView, didFinishLoading style: MLNStyle) {
         prepare(style)
     }

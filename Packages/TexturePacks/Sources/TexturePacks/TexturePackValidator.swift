@@ -17,6 +17,9 @@ enum TexturePackValidator {
             }
         }
         guard textureCount > 0 else { throw TexturePackImportError.noTextures }
+        if let markerURL = pack.markerURL {
+            try validateMarker(at: markerURL)
+        }
         return manifest
     }
 
@@ -36,15 +39,30 @@ enum TexturePackValidator {
         return manifest
     }
 
-    private static func validateImage(at url: URL, name: String) throws {
+    private static func validateMarker(at url: URL) throws {
+        guard
+            let size = pixelSize(at: url, acceptedTypes: [UTType.png.identifier]),
+            size.width == size.height,
+            TexturePackLimits.markerSideRange.contains(size.width)
+        else { throw TexturePackImportError.invalidMarker }
+    }
+
+    private static func pixelSize(at url: URL, acceptedTypes: Set<String>) -> (width: Int, height: Int)? {
         guard
             let source = CGImageSourceCreateWithURL(url as CFURL, nil),
             let type = CGImageSourceGetType(source) as String?,
-            acceptedImageTypes.contains(type),
+            acceptedTypes.contains(type),
             let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString: Any],
             let width = properties[kCGImagePropertyPixelWidth] as? Int,
             let height = properties[kCGImagePropertyPixelHeight] as? Int
-        else { throw TexturePackImportError.invalidImage(name) }
+        else { return nil }
+        return (width, height)
+    }
+
+    private static func validateImage(at url: URL, name: String) throws {
+        guard let (width, height) = pixelSize(at: url, acceptedTypes: acceptedImageTypes) else {
+            throw TexturePackImportError.invalidImage(name)
+        }
         guard width == height else { throw TexturePackImportError.imageNotSquare(name) }
         guard TexturePackLimits.imageSideRange.contains(width) else {
             throw TexturePackImportError.imageSizeOutOfRange(name)

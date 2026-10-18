@@ -19,7 +19,9 @@ public struct MapSkinFactory: Sendable {
             id: Self.skinID(for: pack, appearance: appearance, screenScale: screenScale),
             styleJSON: try styleBuilder.styleJSON(palette: palette),
             images: images,
-            palette: palette
+            palette: palette,
+            marker: MarkerImageLoader(screenScale: screenScale).loadMarker(of: pack),
+            filtering: pack.manifest.filtering
         )
     }
 }

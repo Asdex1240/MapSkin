@@ -31,3 +31,14 @@ struct BundledTexturePacksTests {
         }
     }
 }
+
+extension BundledTexturePacksTests {
+    @Test(arguments: ["classic", "pixel", "paper", "blocks"])
+    func generatedPackShipsALoadableMarker(named name: String) throws {
+        let pack = try TexturePack.load(from: BundledTexturePacks.packURL(named: name))
+
+        let marker = try #require(MarkerImageLoader(screenScale: 3).loadMarker(of: pack))
+
+        #expect(abs(Double(marker.cgImage.width) / marker.scale - MarkerImageLoader.displaySize) < 0.01)
+    }
+}
