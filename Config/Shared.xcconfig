@@ -1,5 +1,6 @@
 PRODUCT_BUNDLE_IDENTIFIER = com.example.mapskin
 DEVELOPMENT_TEAM =
-MAP_STYLE_URL = https:/$()/tiles.openfreemap.org/styles/liberty
+MAP_TILES_URL = https:/$()/tiles.openfreemap.org/planet
+MAP_GLYPHS_URL = https:/$()/tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf
 
 #include? "Local.xcconfig"

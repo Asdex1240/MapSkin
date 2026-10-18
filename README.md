@@ -33,7 +33,8 @@ The app target only composes the app. Features live in local Swift packages unde
 
 | Package | Responsibility |
 |---|---|
-| `TexturePacks` | `.mapskin` format, bundled packs |
+| `TexturePacks` | `.mapskin` format, texture loading and filtering, night variants, bundled packs |
+| `MapStyle` | Style generation (day/night), palettes, color contrast rules |
 | `MapRendering` | `MapSkinView`, the MapLibre map shared by iPhone and CarPlay |
 | `AppUI` | SwiftUI screens for iPhone |
 
@@ -41,7 +42,7 @@ More packages are added as the features that need them are built.
 
 ## Map data
 
-Map tiles come from [OpenFreeMap](https://openfreemap.org), a free service. The style URL is set in
+Map tiles and fonts come from [OpenFreeMap](https://openfreemap.org), a free service. Their URLs are set in
 `Config/Shared.xcconfig`. If you publish your own build with many users, consider hosting your own tiles or using
 another provider.
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A000000000000000000000F /* AppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000011 /* AppUI */; };
+		0A0000000000000000000020 /* MapStyle in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000022 /* MapStyle */; };
+		0A0000000000000000000021 /* TexturePacks in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000023 /* TexturePacks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +18,7 @@
 		0A000000000000000000001C /* AppUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppUI; sourceTree = "<group>"; };
 		0A000000000000000000001D /* MapRendering */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MapRendering; sourceTree = "<group>"; };
 		0A000000000000000000001E /* TexturePacks */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TexturePacks; sourceTree = "<group>"; };
+		0A000000000000000000001F /* MapStyle */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MapStyle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +48,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A000000000000000000000F /* AppUI in Frameworks */,
+				0A0000000000000000000020 /* MapStyle in Frameworks */,
+				0A0000000000000000000021 /* TexturePacks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,22 +74,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0A000000000000000000000A /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				0A000000000000000000001C /* AppUI */,
-				0A000000000000000000001D /* MapRendering */,
-				0A000000000000000000001E /* TexturePacks */,
-			);
-			path = Packages;
-			sourceTree = "<group>";
-		};
 		0A0000000000000000000008 /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				0A0000000000000000000009 /* Shared.xcconfig */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		0A000000000000000000000A /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				0A000000000000000000001C /* AppUI */,
+				0A000000000000000000001D /* MapRendering */,
+				0A000000000000000000001F /* MapStyle */,
+				0A000000000000000000001E /* TexturePacks */,
+			);
+			path = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,6 +114,8 @@
 			name = MapSkin;
 			packageProductDependencies = (
 				0A0000000000000000000011 /* AppUI */,
+				0A0000000000000000000022 /* MapStyle */,
+				0A0000000000000000000023 /* TexturePacks */,
 			);
 			productName = MapSkin;
 			productReference = 0A0000000000000000000004 /* MapSkin.app */;
@@ -141,6 +149,7 @@
 			packageReferences = (
 				0A0000000000000000000012 /* XCLocalSwiftPackageReference "Packages/AppUI" */,
 				0A0000000000000000000014 /* XCLocalSwiftPackageReference "Packages/MapRendering" */,
+				0A0000000000000000000024 /* XCLocalSwiftPackageReference "Packages/MapStyle" */,
 				0A0000000000000000000013 /* XCLocalSwiftPackageReference "Packages/TexturePacks" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -320,12 +329,24 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/MapRendering;
 		};
+		0A0000000000000000000024 /* XCLocalSwiftPackageReference "Packages/MapStyle" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/MapStyle;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		0A0000000000000000000011 /* AppUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppUI;
+		};
+		0A0000000000000000000022 /* MapStyle */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MapStyle;
+		};
+		0A0000000000000000000023 /* TexturePacks */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TexturePacks;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,17 +1,27 @@
 import Foundation
 
 struct AppConfiguration: Sendable {
-    private static let mapStyleURLKey = "MapStyleURL"
+    private enum InfoKey: String {
+        case mapTilesURL = "MapTilesURL"
+        case mapGlyphsURL = "MapGlyphsURL"
+    }
 
-    let mapStyleURL: URL
+    let mapTilesURL: URL
+    let mapGlyphsURL: String
 
     init(bundle: Bundle) {
-        guard
-            let value = bundle.object(forInfoDictionaryKey: Self.mapStyleURLKey) as? String,
-            let url = URL(string: value)
-        else {
-            preconditionFailure("\(Self.mapStyleURLKey) is missing or invalid in Info.plist")
+        let tiles = Self.value(for: .mapTilesURL, in: bundle)
+        guard let tilesURL = URL(string: tiles) else {
+            preconditionFailure("\(InfoKey.mapTilesURL.rawValue) is not a valid URL")
         }
-        mapStyleURL = url
+        mapTilesURL = tilesURL
+        mapGlyphsURL = Self.value(for: .mapGlyphsURL, in: bundle)
+    }
+
+    private static func value(for key: InfoKey, in bundle: Bundle) -> String {
+        guard let value = bundle.object(forInfoDictionaryKey: key.rawValue) as? String, !value.isEmpty else {
+            preconditionFailure("\(key.rawValue) is missing in Info.plist")
+        }
+        return value
     }
 }

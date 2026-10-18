@@ -6,4 +6,11 @@ public struct ThemeColors: Codable, Equatable, Sendable {
         self.day = day
         self.night = night
     }
+
+    public func overrides(for appearance: MapAppearance) -> PaletteOverrides? {
+        switch appearance {
+        case .day: day
+        case .night: night
+        }
+    }
 }

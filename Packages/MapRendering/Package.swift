@@ -8,12 +8,14 @@ let package = Package(
         .library(name: "MapRendering", targets: ["MapRendering"])
     ],
     dependencies: [
+        .package(path: "../MapStyle"),
         .package(url: "https://github.com/maplibre/maplibre-gl-native-distribution.git", exact: "6.31.0")
     ],
     targets: [
         .target(
             name: "MapRendering",
             dependencies: [
+                "MapStyle",
                 .product(name: "MapLibre", package: "maplibre-gl-native-distribution")
             ]
         )

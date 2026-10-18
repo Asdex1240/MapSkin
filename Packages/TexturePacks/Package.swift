@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "TexturePacks",
+    defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
         .library(name: "TexturePacks", targets: ["TexturePacks"])
@@ -10,7 +11,10 @@ let package = Package(
     targets: [
         .target(
             name: "TexturePacks",
-            resources: [.copy("BundledPacks")]
+            resources: [
+                .copy("BundledPacks"),
+                .process("Resources")
+            ]
         ),
         .testTarget(
             name: "TexturePacksTests",
