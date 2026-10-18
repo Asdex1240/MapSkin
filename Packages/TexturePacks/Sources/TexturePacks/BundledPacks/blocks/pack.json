@@ -1,0 +1,24 @@
+{
+  "formatVersion": 1,
+  "name": "Blocks",
+  "author": "MapSkin",
+  "description": "Chunky 16×16 blocks in bright, speckled colors.",
+  "license": "CC0 1.0",
+  "filtering": "pixelated",
+  "colors": {
+    "day": {
+      "background": "#6DBA42",
+      "road": "#A8A8A8",
+      "roadCasing": "#5C5C5C",
+      "label": "#1C1C1C",
+      "route": "#A8170F"
+    },
+    "night": {
+      "background": "#1F3517",
+      "road": "#5E5E5E",
+      "roadCasing": "#2A2A2A",
+      "label": "#EDEDED",
+      "route": "#FF5A47"
+    }
+  }
+}

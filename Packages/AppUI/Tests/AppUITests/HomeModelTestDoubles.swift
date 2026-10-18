@@ -60,15 +60,17 @@ struct HomeModelFixture {
                         labelLanguage: "en"
                     )
                 ),
-                texturePack: try TexturePack.load(
-                    from: BundledTexturePacks.packURL(named: BundledTexturePacks.defaultPackName)
+                textureLibrary: try TexturePackLibrary(
+                    defaults: defaults,
+                    installDirectory: FileManager.default.temporaryDirectory.appending(path: suiteName)
                 ),
                 placeSearch: PlaceSearchService(),
                 recentPlaces: RecentPlacesStore(defaults: defaults),
                 favorites: FavoritesStore(defaults: defaults),
                 routingProvider: routing,
                 locationTracker: tracker,
-                navigationEngine: navigation
+                navigationEngine: navigation,
+                defaults: defaults
             )
         )
     }

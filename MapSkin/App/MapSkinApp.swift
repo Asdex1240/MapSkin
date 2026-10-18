@@ -24,13 +24,14 @@ struct MapSkinApp: App {
                     labelLanguage: Bundle.main.preferredLocalizations.first ?? "en"
                 )
             ),
-            texturePack: Self.loadDefaultTexturePack(),
+            textureLibrary: Self.makeTextureLibrary(),
             placeSearch: PlaceSearchService(),
             recentPlaces: RecentPlacesStore(defaults: .standard),
             favorites: FavoritesStore(defaults: .standard),
             routingProvider: routingProvider,
             locationTracker: locationService,
-            navigationEngine: NavigationEngine(routingProvider: routingProvider, locationTracker: locationService)
+            navigationEngine: NavigationEngine(routingProvider: routingProvider, locationTracker: locationService),
+            defaults: .standard
         )
     }
 
@@ -40,11 +41,14 @@ struct MapSkinApp: App {
         }
     }
 
-    private static func loadDefaultTexturePack() -> TexturePack {
+    private static func makeTextureLibrary() -> TexturePackLibrary {
         do {
-            return try TexturePack.load(from: BundledTexturePacks.packURL(named: BundledTexturePacks.defaultPackName))
+            return try TexturePackLibrary(
+                defaults: .standard,
+                installDirectory: TexturePackLibrary.defaultInstallDirectory()
+            )
         } catch {
-            preconditionFailure("Bundled default texture pack is invalid: \(error)")
+            preconditionFailure("Bundled texture packs are invalid: \(error)")
         }
     }
 }

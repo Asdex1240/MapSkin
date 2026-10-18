@@ -1,0 +1,24 @@
+{
+  "formatVersion": 1,
+  "name": "Paper",
+  "author": "MapSkin",
+  "description": "Hand-drawn pencil and watercolor on paper.",
+  "license": "CC0 1.0",
+  "filtering": "smooth",
+  "colors": {
+    "day": {
+      "background": "#F4ECDA",
+      "road": "#FFFDF7",
+      "roadCasing": "#9C8F78",
+      "label": "#3B3127",
+      "route": "#C0392B"
+    },
+    "night": {
+      "background": "#2A2622",
+      "road": "#6B6256",
+      "roadCasing": "#3A342D",
+      "label": "#EDE3D1",
+      "route": "#FF7A59"
+    }
+  }
+}

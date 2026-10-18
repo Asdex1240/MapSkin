@@ -37,12 +37,40 @@ The app target only composes the app. Features live in local Swift packages unde
 | `RoutingMapKit` | Route calculation with MapKit |
 | `PlaceSearch` | Place search, recent places and favorites |
 | `Location` | Location updates, with high accuracy only while navigating |
-| `TexturePacks` | `.mapskin` format, texture loading and filtering, night variants, bundled packs |
+| `TexturePacks` | `.mapskin` format, import and validation, texture loading and filtering, night variants, bundled packs |
 | `MapStyle` | Style generation (day/night), palettes, color contrast rules |
 | `MapRendering` | `MapSkinView`, the MapLibre map shared by iPhone and CarPlay, route layers and navigation camera |
 | `AppUI` | SwiftUI screens for iPhone |
 
 More packages are added as the features that need them are built.
+
+## Texture packs
+
+A texture pack is a `.mapskin` file (a renamed `.zip`) with this layout:
+
+```
+my-pack.mapskin
+├── pack.json
+├── day/       grass, forest, sand, water, urban, building, industrial, rock, snow (.png or .jpg)
+└── night/     optional; generated from day/ when missing
+```
+
+```json
+{
+  "formatVersion": 1,
+  "name": "My Pack",
+  "author": "Your Name",
+  "filtering": "smooth",
+  "colors": { "day": { "route": "#1A73E8" }, "night": { "route": "#4FC3F7" } }
+}
+```
+
+- `filtering` is `smooth` for painted or photographic textures and `pixelated` for pixel art.
+- Images must be square, between 8×8 and 512×512 pixels. Packs are limited to 64 files and 20 MB.
+- Missing textures are taken from the default pack. Road and route colors without enough contrast are ignored.
+- In the app, Settings → Textures → Create Your Pack shares an empty template.
+
+Only import textures you created or have permission to use. Packs stay on the device.
 
 ## Simulating a drive
 

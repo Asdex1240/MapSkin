@@ -5,6 +5,7 @@ import UIKit
 
 public final class MapSkinView: UIView {
     private static let navigationCameraDuration: TimeInterval = 0.9
+    private static let streetZoomLevel = 15.0
 
     public var onUserTrackingChange: ((Bool) -> Void)?
 
@@ -13,6 +14,7 @@ public final class MapSkinView: UIView {
     private var overlay = RouteOverlay.empty
     private var cameraMode = MapCameraMode.followingUser
     private var overviewPadding = UIEdgeInsets.zero
+    private var hasZoomedToUser = false
 
     public init(skin: MapSkin) {
         self.skin = skin
@@ -96,10 +98,23 @@ public final class MapSkinView: UIView {
 
     public func followUserLocation() {
         cameraMode = .followingUser
-        let camera = mapView.camera
-        camera.pitch = 0
-        mapView.setCamera(camera, animated: true)
-        mapView.setUserTrackingMode(.follow, animated: true, completionHandler: nil)
+        guard
+            let coordinate = mapView.userLocation?.location?.coordinate,
+            CLLocationCoordinate2DIsValid(coordinate)
+        else {
+            mapView.setUserTrackingMode(.follow, animated: true, completionHandler: nil)
+            return
+        }
+        zoomToStreetLevel(at: coordinate, animated: true)
+    }
+
+    private func zoomToStreetLevel(at coordinate: CLLocationCoordinate2D, animated: Bool) {
+        let zoomLevel = max(mapView.zoomLevel, Self.streetZoomLevel)
+        let altitude = MLNAltitudeForZoomLevel(zoomLevel, 0, coordinate.latitude, mapView.bounds.size)
+        let camera = MLNMapCamera(lookingAtCenter: coordinate, altitude: altitude, pitch: 0, heading: 0)
+        mapView.setCamera(camera, withDuration: animated ? 0.6 : 0, animationTimingFunction: nil) { [weak self] in
+            self?.mapView.setUserTrackingMode(.follow, animated: false, completionHandler: nil)
+        }
     }
 
     private func showRouteOverview() {
@@ -146,6 +161,17 @@ public final class MapSkinView: UIView {
 extension MapSkinView: @preconcurrency MLNMapViewDelegate {
     public func mapView(_ mapView: MLNMapView, didFinishLoading style: MLNStyle) {
         prepare(style)
+    }
+
+    public func mapView(_ mapView: MLNMapView, didUpdate userLocation: MLNUserLocation?) {
+        guard
+            !hasZoomedToUser,
+            cameraMode == .followingUser,
+            let coordinate = userLocation?.location?.coordinate,
+            CLLocationCoordinate2DIsValid(coordinate)
+        else { return }
+        hasZoomedToUser = true
+        zoomToStreetLevel(at: coordinate, animated: false)
     }
 
     public func mapView(_ mapView: MLNMapView, didChange mode: MLNUserTrackingMode, animated: Bool) {

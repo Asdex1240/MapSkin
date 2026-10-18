@@ -4,15 +4,24 @@ import SwiftUI
 struct SearchPanel: View {
     let model: HomeModel
     let onFocus: () -> Void
+    let onOpenSettings: () -> Void
 
     @FocusState private var isSearchFieldFocused: Bool
 
     var body: some View {
         VStack(spacing: 0) {
-            searchField
-                .padding(.horizontal)
-                .padding(.top, 20)
-                .padding(.bottom, 8)
+            HStack(spacing: 12) {
+                searchField
+                Button(action: onOpenSettings) {
+                    Image(systemName: "gearshape.fill")
+                        .font(.title2)
+                        .foregroundStyle(.secondary)
+                }
+                .accessibilityLabel(Text("settings.title", bundle: .module))
+            }
+            .padding(.horizontal)
+            .padding(.top, 20)
+            .padding(.bottom, 8)
             List {
                 content
             }

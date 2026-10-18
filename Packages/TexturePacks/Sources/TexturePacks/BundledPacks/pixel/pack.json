@@ -1,0 +1,24 @@
+{
+  "formatVersion": 1,
+  "name": "Pixel",
+  "author": "MapSkin",
+  "description": "16×16 pixel art with crisp edges.",
+  "license": "CC0 1.0",
+  "filtering": "pixelated",
+  "colors": {
+    "day": {
+      "background": "#C7DDA0",
+      "road": "#F7F7F2",
+      "roadCasing": "#6E6E6E",
+      "label": "#1F1F1F",
+      "route": "#1E5BD8"
+    },
+    "night": {
+      "background": "#1C2A1D",
+      "road": "#59665B",
+      "roadCasing": "#2A332B",
+      "label": "#E8F0E0",
+      "route": "#58C7FA"
+    }
+  }
+}

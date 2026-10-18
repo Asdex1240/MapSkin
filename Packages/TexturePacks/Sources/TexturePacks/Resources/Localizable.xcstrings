@@ -64,6 +64,182 @@
           }
         }
       }
+    },
+    "texturePacks.import.error.imageNotSquare %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” must be square."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” debe ser cuadrada."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.imageSizeOutOfRange %@ %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%1$@” must be between %2$lld×%2$lld and %3$lld×%3$lld pixels."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%1$@” debe medir entre %2$lld×%2$lld y %3$lld×%3$lld píxeles."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.invalidImage %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” is not a valid PNG or JPEG image."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” no es una imagen PNG o JPEG válida."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.invalidManifest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The pack.json file is not valid. Check that it includes name, author and filtering."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El archivo pack.json no es válido. Revisa que incluya name, author y filtering."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.manifestNotFound" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The pack has no pack.json file."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El paquete no tiene el archivo pack.json."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.noTextures" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The pack has no textures in day/ or night/."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El paquete no tiene texturas en day/ ni en night/."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.tooLarge %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The pack is too large. The maximum size is %lld MB."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El paquete es demasiado grande. El tamaño máximo es %lld MB."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.tooManyFiles %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The pack has too many files. The maximum is %lld."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El paquete tiene demasiados archivos. El máximo es %lld."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.unreadableArchive" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file could not be read. Use a .mapskin or .zip file, or a folder."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo leer el archivo. Usa un archivo .mapskin o .zip, o una carpeta."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.unsafePath" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The pack contains file paths that are not allowed."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El paquete contiene rutas de archivo no permitidas."
+          }
+        }
+      }
+    },
+    "texturePacks.import.error.unsupportedFormatVersion %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format version %lld is not supported by this version of MapSkin."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta versión de MapSkin no admite la versión de formato %lld."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

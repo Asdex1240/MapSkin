@@ -9,7 +9,7 @@ public struct TexturePack: Identifiable, Sendable {
 
     public static func load(from directoryURL: URL) throws -> TexturePack {
         let manifestURL = directoryURL.appending(path: TexturePackManifest.fileName)
-        guard FileManager.default.fileExists(atPath: manifestURL.path()) else {
+        guard FileManager.default.fileExists(atPath: manifestURL.filePath) else {
             throw TexturePackError.manifestNotFound
         }
         let manifest: TexturePackManifest
@@ -25,6 +25,6 @@ public struct TexturePack: Identifiable, Sendable {
         let variantURL = directoryURL.appending(path: appearance.rawValue, directoryHint: .isDirectory)
         return Self.supportedImageExtensions
             .map { variantURL.appending(path: "\(kind.rawValue).\($0)") }
-            .first { FileManager.default.fileExists(atPath: $0.path()) }
+            .first { FileManager.default.fileExists(atPath: $0.filePath) }
     }
 }

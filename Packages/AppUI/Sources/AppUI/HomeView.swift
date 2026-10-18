@@ -4,6 +4,7 @@ import TexturePacks
 
 public struct HomeView: View {
     private struct SkinRequest: Hashable {
+        let packID: TexturePack.ID
         let appearance: MapAppearance
         let screenScale: Double
     }
@@ -14,6 +15,8 @@ public struct HomeView: View {
 
     @State private var model: HomeModel
     @State private var skinStore: MapSkinStore
+    @State private var importFlow: TexturePackImportFlow
+    @State private var isSettingsPresented = false
     @State private var isFollowingUser = true
     @State private var recenterRequest = 0
     @State private var sheetDetent = Self.collapsedDetent
@@ -22,8 +25,10 @@ public struct HomeView: View {
 
     public init(dependencies: HomeDependencies) {
         _model = State(initialValue: HomeModel(dependencies: dependencies))
-        let skinStore = MapSkinStore(factory: dependencies.skinFactory, pack: dependencies.texturePack)
+        let skinStore = MapSkinStore(factory: dependencies.skinFactory, library: dependencies.textureLibrary)
         _skinStore = State(initialValue: skinStore)
+        let importFlow = TexturePackImportFlow(library: dependencies.textureLibrary, defaults: dependencies.defaults)
+        _importFlow = State(initialValue: importFlow)
     }
 
     public var body: some View {
@@ -47,6 +52,13 @@ public struct HomeView: View {
                 .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .presentationDragIndicator(.visible)
                 .interactiveDismissDisabled()
+                .texturePackImportAlerts(importFlow, isActive: !isSettingsPresented)
+                .sheet(isPresented: $isSettingsPresented) {
+                    SettingsView(flow: importFlow)
+                }
+        }
+        .onOpenURL { url in
+            Task { await importFlow.receive(url) }
         }
         .task(id: skinRequest) {
             await skinStore.loadSkin(for: skinRequest.appearance, screenScale: skinRequest.screenScale)
@@ -67,9 +79,11 @@ public struct HomeView: View {
         if let planning = model.planning {
             RoutePreviewPanel(model: model, state: planning)
         } else {
-            SearchPanel(model: model) {
-                sheetDetent = .large
-            }
+            SearchPanel(
+                model: model,
+                onFocus: { sheetDetent = .large },
+                onOpenSettings: { isSettingsPresented = true }
+            )
         }
     }
 
@@ -105,7 +119,11 @@ public struct HomeView: View {
     }
 
     private var skinRequest: SkinRequest {
-        SkinRequest(appearance: MapAppearance(colorScheme), screenScale: displayScale)
+        SkinRequest(
+            packID: importFlow.library.activePackID,
+            appearance: MapAppearance(colorScheme),
+            screenScale: displayScale
+        )
     }
 
     private func overviewPadding(for size: CGSize) -> UIEdgeInsets {

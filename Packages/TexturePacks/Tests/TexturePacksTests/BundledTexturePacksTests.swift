@@ -26,7 +26,7 @@ struct BundledTexturePacksTests {
             for kind in TextureKind.allCases {
                 let textureURL = packURL.appending(path: "\(variant)/\(kind.rawValue).png")
                 let label = "\(name)/\(variant)/\(kind.rawValue)"
-                #expect(FileManager.default.fileExists(atPath: textureURL.path()), "\(label)")
+                #expect(FileManager.default.fileExists(atPath: textureURL.path(percentEncoded: false)), "\(label)")
             }
         }
     }
