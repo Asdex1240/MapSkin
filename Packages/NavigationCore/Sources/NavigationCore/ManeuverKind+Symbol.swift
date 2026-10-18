@@ -1,7 +1,5 @@
-import NavigationCore
-
 extension ManeuverKind {
-    var symbolName: String {
+    public var symbolName: String {
         switch self {
         case .depart: "location.north.fill"
         case .continueStraight: "arrow.up"

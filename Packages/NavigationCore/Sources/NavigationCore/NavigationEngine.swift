@@ -13,10 +13,10 @@ public final class NavigationEngine {
     public private(set) var route: Route?
     public private(set) var progress: NavigationProgress?
     public private(set) var hasRerouteFailure = false
+    public private(set) var request: RouteRequest?
 
     private let routingProvider: any RoutingProvider
     private let locationTracker: any LocationTracking
-    private var request: RouteRequest?
     private var measure = PolylineMeasure(coordinates: [])
     private var maneuverDistances: [Double] = []
     private var nextManeuverIndex = 0

@@ -75,6 +75,23 @@ public final class MapSkinView: UIView {
         mapView.attributionButtonMargins = margins
     }
 
+    public func setContentInset(_ inset: UIEdgeInsets) {
+        mapView.automaticallyAdjustsContentInset = false
+        guard mapView.contentInset != inset else { return }
+        mapView.setContentInset(inset, animated: true, completionHandler: nil)
+    }
+
+    public func zoom(by delta: Double) {
+        mapView.setZoomLevel(mapView.zoomLevel + delta, animated: true)
+    }
+
+    public func pan(by offset: CGPoint) {
+        let target = CGPoint(x: mapView.bounds.midX + offset.x, y: mapView.bounds.midY + offset.y)
+        let coordinate = mapView.convert(target, toCoordinateFrom: mapView)
+        mapView.setUserTrackingMode(.none, animated: false, completionHandler: nil)
+        mapView.setCenter(coordinate, animated: true)
+    }
+
     public func moveNavigationCamera(to sample: LocationSample) {
         guard cameraMode == .navigation else { return }
         let altitude = MLNAltitudeForZoomLevel(

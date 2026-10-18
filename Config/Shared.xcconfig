@@ -3,4 +3,10 @@ DEVELOPMENT_TEAM =
 MAP_TILES_URL = https:/$()/tiles.openfreemap.org/planet
 MAP_GLYPHS_URL = https:/$()/tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf
 
+CARPLAY_ENABLED = NO
+CARPLAY_ENTITLEMENTS_YES = MapSkin/MapSkin.entitlements
+CARPLAY_ENTITLEMENTS_NO =
+CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*] = MapSkin/MapSkin.entitlements
+CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*] = $(CARPLAY_ENTITLEMENTS_$(CARPLAY_ENABLED))
+
 #include? "Local.xcconfig"

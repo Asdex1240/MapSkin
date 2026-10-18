@@ -17,6 +17,13 @@
     },
     {
       "target": {
+        "containerPath": "container:Packages/CarPlayUI",
+        "identifier": "CarPlayUITests",
+        "name": "CarPlayUITests"
+      }
+    },
+    {
+      "target": {
         "containerPath": "container:Packages/Location",
         "identifier": "LocationTests",
         "name": "LocationTests"

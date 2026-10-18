@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0000000000000000000037 /* CarPlayUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000039 /* CarPlayUI */; };
 		0A0000000000000000000025 /* NavigationCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0000000000000000000027 /* NavigationCore */; };
 		0A0000000000000000000029 /* Location in Frameworks */ = {isa = PBXBuildFile; productRef = 0A000000000000000000002B /* Location */; };
 		0A000000000000000000002D /* RoutingMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A000000000000000000002F /* RoutingMapKit */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0000000000000000000038 /* CarPlayUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CarPlayUI; sourceTree = "<group>"; };
 		0A0000000000000000000035 /* MonterreyDrive.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MonterreyDrive.gpx; sourceTree = "<group>"; };
 		0A0000000000000000000026 /* NavigationCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = NavigationCore; sourceTree = "<group>"; };
 		0A000000000000000000002A /* Location */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Location; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				MapSkin.entitlements,
 			);
 			target = 0A000000000000000000000B /* MapSkin */;
 		};
@@ -57,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A000000000000000000000F /* AppUI in Frameworks */,
+				0A0000000000000000000037 /* CarPlayUI in Frameworks */,
 				0A0000000000000000000020 /* MapStyle in Frameworks */,
 				0A0000000000000000000021 /* TexturePacks in Frameworks */,
 				0A0000000000000000000025 /* NavigationCore in Frameworks */,
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				0A000000000000000000001C /* AppUI */,
+				0A0000000000000000000038 /* CarPlayUI */,
 				0A000000000000000000001D /* MapRendering */,
 				0A000000000000000000001F /* MapStyle */,
 				0A000000000000000000001E /* TexturePacks */,
@@ -140,6 +145,7 @@
 			name = MapSkin;
 			packageProductDependencies = (
 				0A0000000000000000000011 /* AppUI */,
+				0A0000000000000000000039 /* CarPlayUI */,
 				0A0000000000000000000022 /* MapStyle */,
 				0A0000000000000000000023 /* TexturePacks */,
 				0A0000000000000000000027 /* NavigationCore */,
@@ -178,6 +184,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				0A0000000000000000000012 /* XCLocalSwiftPackageReference "Packages/AppUI" */,
+				0A000000000000000000003A /* XCLocalSwiftPackageReference "Packages/CarPlayUI" */,
 				0A0000000000000000000014 /* XCLocalSwiftPackageReference "Packages/MapRendering" */,
 				0A0000000000000000000024 /* XCLocalSwiftPackageReference "Packages/MapStyle" */,
 				0A0000000000000000000013 /* XCLocalSwiftPackageReference "Packages/TexturePacks" */,
@@ -285,7 +292,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MapSkin/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MapSkin;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -312,7 +318,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MapSkin/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MapSkin;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -351,6 +356,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		0A000000000000000000003A /* XCLocalSwiftPackageReference "Packages/CarPlayUI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/CarPlayUI;
+		};
 		0A0000000000000000000028 /* XCLocalSwiftPackageReference "Packages/NavigationCore" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/NavigationCore;
@@ -386,6 +395,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0A0000000000000000000039 /* CarPlayUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CarPlayUI;
+		};
 		0A0000000000000000000027 /* NavigationCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NavigationCore;

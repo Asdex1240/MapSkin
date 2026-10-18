@@ -41,6 +41,7 @@ The app target only composes the app. Features live in local Swift packages unde
 | `MapStyle` | Style generation (day/night), palettes, color contrast rules |
 | `MapRendering` | `MapSkinView`, the MapLibre map shared by iPhone and CarPlay, route layers and navigation camera |
 | `AppUI` | SwiftUI screens for iPhone |
+| `CarPlayUI` | CarPlay scene: map, search, trip previews and guidance with system templates |
 
 More packages are added as the features that need them are built.
 
@@ -71,6 +72,22 @@ my-pack.mapskin
 - In the app, Settings → Textures → Create Your Pack shares an empty template.
 
 Only import textures you created or have permission to use. Packs stay on the device.
+
+## CarPlay
+
+The CarPlay scene uses only system templates (`CPMapTemplate`, `CPSearchTemplate`, `CPListTemplate`, trip previews and
+`CPNavigationSession`) and shares navigation state with the iPhone: starting or ending guidance on one screen updates
+the other.
+
+- **Simulator:** works without any approval. Run the app, then choose I/O → External Displays → CarPlay in the
+  Simulator. The CarPlay entitlement is always applied to simulator builds.
+  - Known issue: the iOS 26.5 simulator runtime crashes `CarPlayTemplateUIHost` whenever any app shows a
+    `CPMapTemplate` (`vehicleSupportsDestinationSharing` is not implemented by the simulator's vehicle). Use an
+    iOS 26.3 simulator runtime (Xcode → Settings → Components → Add Platforms…) to test CarPlay.
+- **Real car or CarPlay Simulator with an iPhone:** requires your own CarPlay navigation entitlement approved by Apple
+  (request it at developer.apple.com/carplay). Once approved, add `CARPLAY_ENABLED = YES` to
+  `Config/Local.xcconfig` so device builds include `MapSkin/MapSkin.entitlements`. Without it, device builds skip the
+  entitlement and the iPhone app works normally.
 
 ## Simulating a drive
 
