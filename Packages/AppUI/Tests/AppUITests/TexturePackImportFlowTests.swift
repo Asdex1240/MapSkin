@@ -66,12 +66,13 @@ struct TexturePackImportFlowTests {
     @Test func declinedNoticeDoesNotImport() async throws {
         let context = try FlowContext()
         defer { context.remove() }
+        let bundledPackCount = context.library.packs.count
 
         await context.flow.receive(try context.templateArchive())
         context.flow.declineNotice()
 
         #expect(context.flow.pendingAction == nil)
-        #expect(context.library.packs.count == 1)
+        #expect(context.library.packs.count == bundledPackCount)
     }
 }
 
