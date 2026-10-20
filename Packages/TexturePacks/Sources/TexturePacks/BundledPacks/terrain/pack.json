@@ -1,0 +1,24 @@
+{
+  "formatVersion": 1,
+  "name": "Terrain",
+  "author": "MapSkin",
+  "description": "Top-down 32×32 pixel terrain with patchy biomes and deep indigo water.",
+  "license": "CC0 1.0",
+  "filtering": "pixelated",
+  "colors": {
+    "day": {
+      "background": "#6B9C2D",
+      "road": "#E8DCA8",
+      "roadCasing": "#5A4A30",
+      "label": "#1C1C1C",
+      "route": "#FFFFFF"
+    },
+    "night": {
+      "background": "#3E552D",
+      "road": "#9A8A68",
+      "roadCasing": "#2A2418",
+      "label": "#EDEDED",
+      "route": "#FFE14D"
+    }
+  }
+}
