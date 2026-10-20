@@ -52,6 +52,16 @@ struct NavigationEngineTests {
         #expect(engine.progress?.nextManeuver?.id == 1)
     }
 
+    @Test func reportsDistanceTraveledAlongRoute() async throws {
+        let engine = makeEngine()
+        engine.start(route: TestRoutes.northbound, request: TestRoutes.request)
+
+        await engine.process(TestRoutes.sample(north: 320, east: 10))
+
+        let traveled = try #require(engine.progress?.distanceTraveled.converted(to: .meters).value)
+        #expect(abs(traveled - 320) < 1)
+    }
+
     @Test func estimatesRemainingTimeProportionally() async throws {
         let engine = makeEngine()
         engine.start(route: TestRoutes.northbound, request: TestRoutes.request)

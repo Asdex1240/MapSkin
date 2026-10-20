@@ -13,7 +13,6 @@ final class CarPlayGuidance {
     private var session: CPNavigationSession?
     private var preparedTrip: CPTrip?
     private var shownManeuverIDs: [Maneuver.ID] = []
-    private var shownRouteID: Route.ID?
     private var observations: [any ObservationCancelling] = []
 
     init(
@@ -79,7 +78,6 @@ final class CarPlayGuidance {
         mapTemplate.hideTripPreviews()
         session = mapTemplate.startNavigationSession(for: trip)
         shownManeuverIDs = []
-        shownRouteID = nil
         mapViewController.setCameraMode(.navigation)
         onActiveChange(true)
         progressChanged(to: engine.progress)
@@ -100,11 +98,14 @@ final class CarPlayGuidance {
 
     private func progressChanged(to progress: NavigationProgress?) {
         guard let session, let progress, let route = engine.route else { return }
-        if route.id != shownRouteID {
-            shownRouteID = route.id
-            let overlay = RouteOverlay(routes: [route], selectedRouteID: route.id, destination: route.polyline.last)
-            mapViewController.show(overlay)
-        }
+        mapViewController.show(
+            RouteOverlay(
+                routes: [route],
+                selectedRouteID: route.id,
+                destination: route.polyline.last,
+                traveledDistance: progress.distanceTraveled
+            )
+        )
         updateManeuvers(in: session, progress: progress)
         if let sample = progress.location {
             mapViewController.moveNavigationCamera(to: sample)

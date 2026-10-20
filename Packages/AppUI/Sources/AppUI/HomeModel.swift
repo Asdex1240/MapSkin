@@ -43,7 +43,12 @@ final class HomeModel {
 
     var routeOverlay: RouteOverlay {
         if isNavigating, let route = navigation.route {
-            return RouteOverlay(routes: [route], selectedRouteID: route.id, destination: route.polyline.last)
+            return RouteOverlay(
+                routes: [route],
+                selectedRouteID: route.id,
+                destination: route.polyline.last,
+                traveledDistance: navigation.progress?.distanceTraveled
+            )
         }
         switch planning {
         case .ready(let plan):

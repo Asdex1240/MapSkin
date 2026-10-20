@@ -31,8 +31,12 @@ public struct MapPalette: Equatable, Sendable {
     public var routeCasing: RGBColor { route.darkened(by: 0.35) }
     public var alternativeRoute: RGBColor { route.mixed(with: background, amount: 0.55) }
     public var alternativeRouteCasing: RGBColor { routeCasing.mixed(with: background, amount: 0.45) }
+    public var traveledRoute: RGBColor { Self.traveledGray.mixed(with: background, amount: 0.25) }
+    public var traveledRouteCasing: RGBColor { traveledRoute.darkened(by: 0.3) }
     public var buildingOutline: RGBColor { label.mixed(with: background, amount: 0.6) }
     public var buildingExtrusion: RGBColor { roadCasing.mixed(with: background, amount: 0.3) }
+
+    private static let traveledGray = RGBColor(red: 0.6, green: 0.62, blue: 0.66)
 
     public static func standard(for appearance: MapAppearance) -> MapPalette {
         switch appearance {

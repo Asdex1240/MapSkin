@@ -84,6 +84,25 @@ struct HomeModelTests {
         #expect(fixture.model.cameraMode == .navigation)
     }
 
+    @Test func marksTraveledPartOfRouteWhileNavigating() async throws {
+        let fixture = try HomeModelFixture(routes: .success([fastest]))
+        defer { fixture.tearDown() }
+        await fixture.model.planRoute(to: HomeModelFixture.destination)
+
+        fixture.model.startNavigation()
+
+        #expect(fixture.model.routeOverlay.traveledDistance?.converted(to: .meters).value == 0)
+    }
+
+    @Test func doesNotMarkTraveledPartWhilePlanning() async throws {
+        let fixture = try HomeModelFixture(routes: .success([fastest]))
+        defer { fixture.tearDown() }
+
+        await fixture.model.planRoute(to: HomeModelFixture.destination)
+
+        #expect(fixture.model.routeOverlay.traveledDistance == nil)
+    }
+
     @Test func endingNavigationReturnsToBrowsing() async throws {
         let fixture = try HomeModelFixture(routes: .success([fastest]))
         defer { fixture.tearDown() }

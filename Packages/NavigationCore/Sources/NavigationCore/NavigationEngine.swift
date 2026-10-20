@@ -130,6 +130,7 @@ public final class NavigationEngine {
             followingManeuver: maneuver(at: nextManeuverIndex + 1, in: route),
             distanceToNextManeuver: Measurement(value: nextDistance, unit: .meters),
             remainingDistance: Measurement(value: remaining, unit: .meters),
+            distanceTraveled: Measurement(value: min(max(0, alongRoute), measure.totalLength), unit: .meters),
             remainingTravelTime: remainingTime,
             estimatedArrival: now.addingTimeInterval(remainingTime.timeInterval),
             location: sample
